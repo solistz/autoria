@@ -42,16 +42,17 @@ if __name__ == '__main__':
     # print(fuel)
     # akp = soup.findAll('li', class_='item-char')[3].text
     # print(akp)
-    cars = soup.findAll('section', class_='ticket-item')
-    # print(len(cars))
-    iii = soup.findAll('section', class_='ticket-item')
-    # print(iii)
-    # print(cars)
+    cars = soup.find('div', class_='standart-view').find('section', class_='ticket-item').find('div', class_='hide').get('data-mark-name')
+    print(cars)
+    carsall = soup.findAll('section', class_='ticket-item')
+    print(len(carsall))
+    # print(carsall)
 
-    for car in iii:
-        qqq = soup.find('div', class_='hide')
+
+    for car in carsall:
+        qqq = car.find('div', class_='hide').get('data-mark-name')
         print(qqq)
-        # print(car)
+
 
 
 
