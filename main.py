@@ -45,7 +45,7 @@ if __name__ == '__main__':
     cars = soup.find('div', class_='standart-view').find('section', class_='ticket-item').find('div', class_='hide').get('data-mark-name')
     print(cars)
     carsall = soup.findAll('section', class_='ticket-item')
-    print(len(carsall))
+    # print(len(carsall))
     # print(carsall)
 
 
