@@ -19,10 +19,11 @@ def ria(htp):
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print_hi('PyCharm')
-    url = "https://energo.km.ua"
-    url = "https://auto.ria.com/uk/search/?indexName=auto,order_auto,newauto_search&categories.main.id=1&region.id[0]=4&price.currency=1&mileage.lte=100&engine.lte=1.6&sort[0].order=dates.created.desc&abroad.not=0&custom.not=1&size=100&year[0].gte=2005&price.USD.gte=2000&price.USD.lte=4000"
+    # url = "https://auto.ria.com/uk/search/?indexName=auto,order_auto,newauto_search&categories.main.id=1&region.id[0]=4&price.currency=1&mileage.lte=100&engine.lte=1.6&sort[0].order=dates.created.desc&abroad.not=0&custom.not=1&size=100&year[0].gte=2005&price.USD.gte=2000&price.USD.lte=4000"
+    url = "https://auto.ria.com/uk/search/?indexName=auto,order_auto,newauto_search&categories.main.id=1&price.currency=1&mileage.lte=100&sort[0].order=dates.created.desc&abroad.not=0&custom.not=1&size=100&year[0].gte=2010&price.USD.gte=2000&price.USD.lte=5000&region.id[0]=4"
     geturl = requests.get(url)
-    #print(geturl.text)
+    # print(geturl.text)
+    #print(geturl)
     soup = BeautifulSoup(geturl.text, 'lxml')
     # href = soup.find('div', class_='content-bar').find('a', class_='address').get('href')
     # print(href)
@@ -43,15 +44,18 @@ if __name__ == '__main__':
     # akp = soup.findAll('li', class_='item-char')[3].text
     # print(akp)
     cars = soup.find('div', class_='standart-view').find('section', class_='ticket-item').find('div', class_='hide').get('data-mark-name')
-    print(cars)
+    # print(cars)
     carsall = soup.findAll('section', class_='ticket-item')
-    # print(len(carsall))
+    print(len(carsall)) # count Number
     # print(carsall)
-
-
+    cnum = 0
     for car in carsall:
         qqq = car.find('div', class_='hide').get('data-mark-name')
-        print(qqq)
+        www = car.find('div', class_='hide').get('data-model-name')
+        if qqq == 'ВАЗ / Lada':
+            print("BAZ")
+        cnum=cnum+1
+        print(cnum,' '+qqq+' '+www)
 
 
 
